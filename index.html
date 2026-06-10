@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Learning Hub - Placement Test</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcomeScreen" class="screen active">
+            <div class="welcome-content">
+                <div class="logo-container">
+                    <svg class="logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="48" fill="#1e3a8a" stroke="#3b82f6" stroke-width="2"/>
+                        <text x="50" y="60" font-size="40" font-weight="bold" fill="#fff" text-anchor="middle">ELH</text>
+                    </svg>
+                </div>
+                <h1>English Learning Hub</h1>
+                <h2>Placement Test</h2>
+                <p class="description">Assess your English level in 45 minutes</p>
+                
+                <div class="student-info">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="educationLevel">Educational Level *</label>
+                        <select id="educationLevel" required>
+                            <option value="">Select your level</option>
+                            <option value="High School">High School</option>
+                            <option value="Bachelor">Bachelor's Degree</option>
+                            <option value="Master">Master's Degree</option>
+                            <option value="PhD">PhD</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="startTest()">Start Test</button>
+                <p class="info-text">⏱️ Duration: 45 minutes | 📝 50 Questions | 🌐 English Only</p>
+            </div>
+        </div>
+
+        <!-- Test Screen -->
+        <div id="testScreen" class="screen">
+            <div class="test-header">
+                <div class="timer">
+                    <span id="timerDisplay">45:00</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <div class="question-counter">
+                    <span id="questionNumber">1</span> / <span id="totalQuestions">50</span>
+                </div>
+            </div>
+
+            <div class="test-content">
+                <div class="section-title" id="sectionTitle">Grammar</div>
+                <div id="questionContainer" class="question-container">
+                    <!-- Questions will be loaded here -->
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="previousQuestion()" id="prevBtn" disabled>Previous</button>
+                    <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn">Next</button>
+                    <button class="btn btn-danger" onclick="submitTest()" id="submitBtn" style="display:none;">Submit Test</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="resultsScreen" class="screen">
+            <div class="results-content">
+                <h1>Test Results</h1>
+                <div class="score-display">
+                    <div class="score-circle">
+                        <span id="finalScore">0</span>
+                        <span class="score-label">/ 100</span>
+                    </div>
+                </div>
+                <h2 id="levelName" class="level-name">A1 Beginner</h2>
+                <p id="levelDescription" class="level-description">Your English proficiency level</p>
+
+                <div class="score-breakdown">
+                    <div class="breakdown-item">
+                        <span class="label">Grammar (20Q):</span>
+                        <span id="grammarScore" class="value">0/20</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="label">Vocabulary (15Q):</span>
+                        <span id="vocabularyScore" class="value">0/15</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="label">Reading (10Q):</span>
+                        <span id="readingScore" class="value">0/10</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="label">Writing (1T):</span>
+                        <span id="writingScore" class="value">0/5</span>
+                    </div>
+                </div>
+
+                <div class="level-info" id="levelInfo"></div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="downloadCertificate()">Download Certificate</button>
+                    <button class="btn btn-secondary" onclick="retakeTest()">Retake Test</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
